@@ -1,12 +1,27 @@
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
   entry: './src/index.js',
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist')
+  },
+  optimization: {
+    usedExports: true // import { } from '...' 清除未使用的模块
+  },
+  devtool: 'cheap-module-eval-source-map',
+  devServer: {
+		contentBase: './dist',
+    open: false,
+    compress: true,
+    port: 9999,
+    proxy: {//配置跨域，访问的域名会被代理到本地的3000端口
+      '/api': 'http://localhost:3000'
+    }
   },
   module: {
     rules: [
@@ -44,7 +59,7 @@ module.exports = {
             options: {
               limit: 1024,
               outputPath: 'images/',
-              name: '[name].[ext]'
+              name: '[name]_[hash].[ext]'
             }
           }
         ]
@@ -80,8 +95,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/template.html",
+      template: "./src/template.html", // 在打包之后，以.html为模板，把打包生成的js自动引入到这个html文件中
       filename: "./index.html"
-    })
+    }),
+    new CleanWebpackPlugin({
+      dir: true
+    }) // 在打包之前，可以删除dist文件夹下的所有内容
   ],
 };
+

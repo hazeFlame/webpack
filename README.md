@@ -21,6 +21,9 @@
 > * babel-loader 支持babel
 > * html-loader 支持html
 > * url-loader 支持将小图片转换成base64
+> * style-loader
+> * css-loader
+> * less-loader
 
 ```js
   module.exports = {

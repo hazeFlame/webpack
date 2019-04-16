@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production"
+  },
+  "sideEffects": false,
   "dependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
@@ -23,15 +29,11 @@
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "autoprefixer": "^9.5.1",
+    "clean-webpack-plugin": "^2.0.1",
     "file-loader": "^3.0.1",
     "postcss-loader": "^3.0.0",
     "url-loader": "^1.1.2",
     "webpack-cli": "^3.3.0"
-  },
-  "scripts": {
-    "start": "webpack-dev-server --open --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
