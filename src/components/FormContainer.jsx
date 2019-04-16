@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from "react"
 import Input from './Input.jsx'
 import img from '../../static/git.gif'
+import styles from './styles.less'
 
 class FormContainer extends Component {
   state = {
@@ -15,6 +15,10 @@ class FormContainer extends Component {
   render() {
     return (
       <div>
+        <div className={styles.content}>
+          <div>1</div>
+          <div>2</div>
+        </div>
         <img src={img} />
         <form id="article-form">
           <Input
