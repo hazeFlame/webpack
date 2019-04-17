@@ -2,9 +2,10 @@ const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
+const APP_PATH = path.resolve(__dirname, '../src')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: path.resolve(APP_PATH, './index.js'),
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist')
