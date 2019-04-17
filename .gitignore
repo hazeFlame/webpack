@@ -15,4 +15,7 @@ dist.zip
 
 tsconfig.json
 package-lock.json
+
+# 打包分析json http://webpack.github.io/analyse/
+stats.json
 yarn.lock
