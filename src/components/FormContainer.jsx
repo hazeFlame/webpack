@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import Input from './Input.jsx'
-import img from '../../static/git.gif'
+import Input from 'components/Input.jsx'
+import img from 'static/git.gif'
 import styles from './styles.less'
 
 class FormContainer extends Component {
