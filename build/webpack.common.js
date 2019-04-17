@@ -4,7 +4,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
   entry: './src/index.js',
   output: {
     filename: 'index.js',
@@ -13,13 +12,12 @@ module.exports = {
   optimization: {
     usedExports: true // import { } from '...' 清除未使用的模块
   },
-  devtool: 'cheap-module-eval-source-map',
   devServer: {
 		contentBase: './dist',
     open: false,
     compress: true,
     port: 9999,
-    proxy: {//配置跨域，访问的域名会被代理到本地的3000端口
+    proxy: { //配置跨域，访问的域名会被代理到本地的3000端口
       '/api': 'http://localhost:3000'
     }
   },
