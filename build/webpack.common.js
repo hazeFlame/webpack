@@ -27,32 +27,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(css|less)$/,
-        use: [
-          {
-            loader: 'style-loader'
-          }, 
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2, // 如果less文件里还引入了另外一个less文件，另一个文件还会从postcss-loader向上解析。如果不加，就直接从css-loader开始解析。
-              modules: true, // 开启css的模块打包。css样式不会和其他模块发生耦合和冲突
-              sourceMap: true, 
-            },
-          }, 
-          {
-            loader: 'less-loader',
-            options: {
-              strictMath: true,
-              noIeCompat: true
-            }
-          },
-          {
-            loader: 'postcss-loader'
-          }, 
-        ]
-      },
-      {
         test: /\.(png|jpg|gif)$/i,
         use: [
           {

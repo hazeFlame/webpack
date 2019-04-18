@@ -67,7 +67,7 @@
   }
 ```
 ### 配置Babel
-- webpack中的babel-loader便担任着将ES6语法转换为浏览器所能理解语法的工作。
+- webpack中的babel-loader 便担任着将ES6语法转换为浏览器所能理解语法的工作。
 - @babel/preset-env 负责将ES6语法转换成ES5
 - @babel/preset-react 负责将JSX语法转化为JavaScript
 - @babel/plugin-proposal-class-properties 可以省略类中consructor
@@ -84,3 +84,7 @@
     "plugins": ["@babel/plugin-proposal-class-properties"] 
   }
 ```
+#### CSS
+- mini-css-extract-plugin 抽离 css
+- optimize-css-assets-webpack-plugin 压缩css
+> 修改webpack 配置 package.json 修改 "sideEffects": ["*.css"] 除了css文件，其余的都TreeShaking
