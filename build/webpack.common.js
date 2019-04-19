@@ -8,13 +8,18 @@ const splitChunks = require('./config/splitChunksPlugin')
 module.exports = {
   entry: path.resolve(config.APP_PATH, 'index.js'),
   output: {
-    filename: 'index.js',
     path: path.resolve(config.ROOT_PATH, 'dist')
   },
+  
+  performance: false, // 禁止提示性能上的一些问题
   optimization: {
+    runtimeChunk: { // 兼容老版本webpack4，把manifest打包到runtime里，不影响业务代码和第三方模块
+			name: 'runtime'
+		},
     usedExports: true,  // Tree Shaking // import { } from '...' 清除未使用的模块
     splitChunks: Object.assign({}, splitChunks)
   },
+
   devServer: {
 		contentBase: './dist', // 配置开发服务运行时的文件根目录
     open: false, // 自动打开浏览器

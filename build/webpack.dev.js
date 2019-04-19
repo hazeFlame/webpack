@@ -7,6 +7,10 @@ const config = require('./config')
 const devConfig = {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map', // sourcemap
+  output: {
+		filename: '[name].js',
+		chunkFilename: '[name].js',
+	},
   devServer: {
 		contentBase: path.resolve(config.ROOT_PATH, 'dist'),
     open: false,

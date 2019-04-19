@@ -11,6 +11,10 @@ const prodConfig = {
       new OptimizeCSSAssetsPlugin({})
     ]
   },
+  output: {
+		filename: '[name].[contenthash].js', // 源代码不变，hash值就不会变，解决浏览器缓存问题。打包上线时，用户只需要更新有变化的代码，没有变化的从浏览器缓存读取
+		chunkFilename: '[name].[contenthash].js'
+	},
   module: {
     rules: [
       {
