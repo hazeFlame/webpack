@@ -5,8 +5,8 @@ const path = require('path')
 const config = require('./config')
 const splitChunks = require('./config/splitChunksPlugin')
 const merge = require('webpack-merge')
-const devConfig = require('./webpack.dev.js')
-const prodConfig = require('./webpack.prod.js')
+const devConfig = require('./webpack.dev')
+const prodConfig = require('./webpack.prod')
 
 const commonConfig = {
   entry: path.resolve(config.APP_PATH, 'index.js'),
@@ -18,7 +18,7 @@ const commonConfig = {
   optimization: {
     runtimeChunk: { // 兼容老版本webpack4，把manifest打包到runtime里，不影响业务代码和第三方模块
 			name: 'runtime'
-		},
+    },
     usedExports: true,  // Tree Shaking // import { } from '...' 清除未使用的模块
     splitChunks: Object.assign({}, splitChunks)
   },
@@ -40,25 +40,25 @@ const commonConfig = {
           {
             loader: 'url-loader',
             options: {
-              limit: 1024,
+              limit: 1024, // 单位b
               outputPath: 'images/',
               name: '[name]_[hash].[ext]'
             }
           }
         ]
       },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]', //打包后的图片名字，后缀和打包的之前的图片一样
-              outputPath: 'images/' //图片打包后的地址
-            },
-          },
-        ],
-      },
+      // {
+      //   test: /\.(png|jpg|gif)$/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: '[name].[ext]', //打包后的图片名字，后缀和打包的之前的图片一样
+      //         outputPath: 'images/' //图片打包后的地址
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -81,6 +81,7 @@ const commonConfig = {
       components: path.resolve(config.APP_PATH, 'components'),
       static: path.resolve(config.STATIC_PATH),
     },
+    extensions: ['.js', '.jsx', 'less', '.css'] // 省略文件名后缀
   },
   plugins: [
     new HtmlWebPackPlugin({

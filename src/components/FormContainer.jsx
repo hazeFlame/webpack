@@ -1,7 +1,8 @@
 import React, { Component } from "react"
-import Input from 'components/Input.jsx'
+import Input from 'components/Input'
 import img from 'static/git.gif'
-import styles from './styles.less'
+import img2 from 'static/123.png'
+import styles from 'components/styles.less'
 
 class FormContainer extends Component {
   state = {
@@ -20,6 +21,7 @@ class FormContainer extends Component {
           <div>2</div>
         </div>
         <img src={img} />
+        <img src={img2} />
         <form id="article-form">
           <Input
             text="SEO title"

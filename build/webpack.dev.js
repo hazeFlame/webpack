@@ -32,14 +32,14 @@ module.exports = {
               sourceMap: true, 
             },
           }, 
+          'postcss-loader',
           {
             loader: 'less-loader',
             options: {
               strictMath: true,
               noIeCompat: true
             }
-          },
-          'postcss-loader'
+          }
         ]
       }
     ]

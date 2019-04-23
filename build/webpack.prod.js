@@ -1,13 +1,12 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"); // css 压缩
+const TerserJSPlugin = require('terser-webpack-plugin') // js 压缩
 
 module.exports = {
   mode: 'production',
   devtool: 'cheap-module-source-map',
   optimization: {
-    minimizer: [
-      new OptimizeCSSAssetsPlugin({})
-    ]
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
   },
   output: {
 		filename: '[name].[contenthash].js', // 源代码不变，hash值就不会变，解决浏览器缓存问题。打包上线时，用户只需要更新有变化的代码，没有变化的从浏览器缓存读取
@@ -27,14 +26,14 @@ module.exports = {
               sourceMap: true, 
             },
           }, 
+          'postcss-loader',
           {
             loader: 'less-loader',
             options: {
               strictMath: true,
               noIeCompat: true
             }
-          },
-          'postcss-loader'
+          }
         ]
       },
     ]
