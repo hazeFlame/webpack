@@ -1,9 +1,7 @@
-const merge = require('webpack-merge')
-const commonConfig = require('./webpack.common.js')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const prodConfig = {
+module.exports = {
   mode: 'production',
   devtool: 'cheap-module-source-map',
   optimization: {
@@ -47,6 +45,4 @@ const prodConfig = {
       chunkFilename: '[name].chunk.css' // 间接引用的css文件
     })
   ]
-};
-
-module.exports = merge(commonConfig, prodConfig)
+}

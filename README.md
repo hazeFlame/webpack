@@ -88,3 +88,7 @@
 - mini-css-extract-plugin 抽离 css
 - optimize-css-assets-webpack-plugin 压缩css
 > 修改webpack 配置 package.json 修改 "sideEffects": ["*.css"] 除了css文件，其余的都TreeShaking
+
+### 环境变量使用
+- 通过在package.json 传入环境变量 --env.production 
+- 重构webpack config文件 在common文件中进行marge
