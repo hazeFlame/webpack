@@ -7,6 +7,7 @@ const splitChunks = require('./config/splitChunksPlugin')
 const merge = require('webpack-merge')
 const devConfig = require('./webpack.dev')
 const prodConfig = require('./webpack.prod')
+const NyanProgressPlugin = require('nyan-progress-webpack-plugin')
 
 const commonConfig = {
   entry: path.resolve(config.APP_PATH, 'index.js'),
@@ -90,7 +91,17 @@ const commonConfig = {
     }),
     new CleanWebpackPlugin({
       dir: true
-    }) // 在打包之前，可以删除dist文件夹下的所有内容
+    }), // 在打包之前，可以删除dist文件夹下的所有内容
+    new NyanProgressPlugin({
+      // 获取进度的时间间隔，默认 180 ms
+      debounceInterval: 60,
+      nyanCatSays (progress, messages) {
+        if (progress === 1) {
+          // 当构建完成时，喊出「呦，又在写 Bug 了？」
+          return '呦, 又在写 Bug 了?'
+        }
+      }
+    })
   ],
 };
 
