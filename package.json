@@ -10,7 +10,9 @@
     "dev-build": "webpack --profile --json > stats.json --config ./build/webpack.common.js",
     "build": "webpack --env.production --config ./build/webpack.common.js"
   },
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "dependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
@@ -36,6 +38,7 @@
     "mini-css-extract-plugin": "^0.6.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
+    "terser-webpack-plugin": "^1.2.3",
     "url-loader": "^1.1.2",
     "webpack-cli": "^3.3.0",
     "webpack-merge": "^4.2.1"
