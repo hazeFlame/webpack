@@ -39,7 +39,7 @@ const commonConfig = {
         test: /\.(png|jpg|gif)$/i,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'url-loader', // 内置了file-loader 包
             options: {
               limit: 1024, // 单位b
               outputPath: 'images/',
