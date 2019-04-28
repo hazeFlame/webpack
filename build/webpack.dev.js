@@ -33,13 +33,7 @@ module.exports = {
             },
           }, 
           'postcss-loader',
-          {
-            loader: 'less-loader',
-            options: {
-              strictMath: true,
-              noIeCompat: true
-            }
-          }
+          'less-loader',
         ]
       }
     ]
